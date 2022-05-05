@@ -22,6 +22,10 @@ df['PERCENTAGE'] = (df['LTP']/df['BUYPRICE'] - 1)*100
 
 df['PROFITLOSS'] = (df['LTP'] - df['BUYPRICE'])*(df['QUANTITY'])
 
+df.loc['Total', 'INVESTED'] = df['INVESTED'].sum()
+df.loc['Total', 'PROFITLOSS'] = df['PROFITLOSS'].sum()
+df.loc['Total', 'PERCENTAGE'] = round(df['PROFITLOSS']*100/df['INVESTED'], 2)
+
 print(df)
 print('Total Investment:', df['INVESTED'].sum())
 print('Profit & Loss:', round(df['PROFITLOSS'].sum(), 2))
